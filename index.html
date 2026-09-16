@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yongying Liu</title>
+<meta name="description" content="Yongying Liu — Graduate School of Frontier Sciences, The University of Tokyo. UAV remote sensing and deep learning for coastal and marine environmental monitoring.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<style>
+  :root{
+    --bg:#ffffff; --panel:#f6f8f8; --ink:#16201f; --muted:#5b6a68;
+    --line:#e2e8e7; --accent:#0f6e6c; --accent-soft:#e6f1f0; --deep:#0b3b4c;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#111716; --panel:#182120; --ink:#e8efee; --muted:#9aaba9;
+      --line:#26312f; --accent:#4fb3ae; --accent-soft:#16302e; --deep:#7fc5d6;
+      color-scheme: dark;
+    }
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,"Helvetica Neue",Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:780px; margin:0 auto; padding:0 20px}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  img{max-width:100%}
+
+  /* ---------- header ---------- */
+  header{padding-block:56px 40px; border-bottom:1px solid var(--line)}
+  .id{display:flex; gap:28px; align-items:flex-start; flex-wrap:wrap}
+  .portrait{
+    width:132px; height:132px; flex:none; border-radius:50%; object-fit:cover;
+    background:var(--panel); border:1px solid var(--line);
+  }
+  .id-text{flex:1 1 320px; min-width:0}
+  h1{margin:0 0 6px; font-size:2rem; line-height:1.15; letter-spacing:-.02em}
+  .role{margin:0 0 2px; color:var(--ink); font-weight:600}
+  .affil{margin:0; color:var(--muted); font-size:.94rem}
+  .links{margin:16px 0 0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:8px}
+  .links a{
+    display:inline-block; padding:5px 11px; border-radius:999px; font-size:.85rem;
+    background:var(--panel); border:1px solid var(--line); color:var(--ink);
+  }
+  .links a:hover{border-color:var(--accent); color:var(--accent)}
+
+  /* ---------- sections ---------- */
+  section{padding-block:36px; border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:0}
+  h2{
+    margin:0 0 18px; font-size:.78rem; font-weight:700; letter-spacing:.11em;
+    text-transform:uppercase; color:var(--accent);
+  }
+  p{margin:0 0 14px}
+  p:last-child{margin-bottom:0}
+
+  /* ---------- interests ---------- */
+  .interests{margin:0; padding:0; list-style:none; display:grid; gap:10px}
+  .interests li{padding-left:18px; position:relative; color:var(--muted)}
+  .interests li::before{
+    content:""; position:absolute; left:0; top:.62em; width:7px; height:7px;
+    border-radius:2px; background:var(--accent);
+  }
+  .interests b{color:var(--ink); font-weight:600}
+
+  /* ---------- featured ---------- */
+  .feature{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:22px 22px 20px;
+  }
+  .feature h3{margin:0 0 4px; font-size:1.12rem; line-height:1.3}
+  .feature .venue{margin:0 0 12px; color:var(--muted); font-size:.88rem}
+  .feature p{font-size:.95rem; color:var(--muted)}
+  .actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px}
+  .actions a{
+    display:inline-block; padding:8px 15px; border-radius:7px; font-size:.88rem;
+    font-weight:600; background:var(--accent); color:#fff; border:1px solid var(--accent);
+  }
+  .actions a.ghost{background:transparent; color:var(--accent)}
+  .actions a:hover{opacity:.88}
+
+  /* ---------- publications ---------- */
+  ol.pubs{margin:0; padding:0; list-style:none; counter-reset:pub}
+  ol.pubs li{
+    padding:0 0 18px 34px; margin-bottom:18px; position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  ol.pubs li:last-child{border-bottom:0; margin-bottom:0; padding-bottom:0}
+  ol.pubs li::before{
+    counter-increment:pub; content:counter(pub);
+    position:absolute; left:0; top:1px; width:23px; height:23px; border-radius:50%;
+    background:var(--accent-soft); color:var(--accent);
+    font-size:.75rem; font-weight:700; display:grid; place-items:center;
+  }
+  .pt{display:block; font-weight:600; margin-bottom:3px}
+  .pa{display:block; color:var(--muted); font-size:.89rem}
+  .pa .me{color:var(--ink); font-weight:600}
+  .pv{display:block; color:var(--muted); font-size:.89rem; margin-top:2px}
+  .pv em{color:var(--ink); font-style:italic}
+  .tag{
+    display:inline-block; margin-left:7px; padding:1px 7px; border-radius:4px;
+    font-size:.72rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    background:var(--accent-soft); color:var(--accent); vertical-align:1px;
+  }
+
+  /* ---------- contact ---------- */
+  .contact{display:grid; gap:9px; margin:0; font-size:.95rem}
+  .contact div{display:flex; gap:12px}
+  .contact dt{flex:none; width:78px; color:var(--muted)}
+  .contact dd{margin:0; min-width:0; overflow-wrap:anywhere}
+
+  footer{padding-block:28px 40px; color:var(--muted); font-size:.82rem}
+
+  @media (max-width:520px){
+    header{padding-block:40px 32px}
+    h1{font-size:1.65rem}
+    .portrait{width:96px; height:96px}
+    .contact div{flex-direction:column; gap:1px}
+    .contact dt{width:auto}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <div class="id">
+    <!-- TODO: drop a square headshot in as portrait.jpg, or delete this <img>. -->
+    <img class="portrait" src="portrait.jpg" alt="Yongying Liu" onerror="this.style.display='none'">
+    <div class="id-text">
+      <h1>Yongying Liu</h1>
+      <p class="role">Doctoral student, Department of Ocean Technology, Policy, and Environment</p>
+      <p class="affil">Graduate School of Frontier Sciences, The University of Tokyo &middot; Kashiwa, Japan</p>
+      <ul class="links">
+        <li><a href="mailto:ryuuwinnie@g.ecc.u-tokyo.ac.jp">Email</a></li>
+        <li><a href="https://scholar.google.com/citations?user=TODO">Google&nbsp;Scholar</a></li>
+        <li><a href="https://orcid.org/TODO">ORCID</a></li>
+        <li><a href="https://github.com/WinnieIsSleepingzzZ">GitHub</a></li>
+        <li><a href="cv.pdf">CV&nbsp;(PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section>
+  <h2>About</h2>
+  <p>
+    I am a doctoral student at the University of Tokyo, working on how consumer-grade
+    unmanned aerial vehicles and deep learning can turn coastal and shallow-water
+    environments into something you can actually measure &mdash; not just photograph.
+  </p>
+  <p>
+    Most environmental litter surveys report counts, because counts are what a human
+    walking a transect can record. My work asks what becomes visible when a survey
+    returns an outline for every individual object instead: how much of a beach a
+    given class of debris really covers, which sources dominate by mass rather than
+    by tally, and how cheaply that measurement can be repeated. The same question
+    runs through my work on riverbeds, shallow reefs, and amphibious UAV platforms.
+  </p>
+  <p>
+    My doctoral work is supported by the Japan Science and Technology Agency through
+    the SPRING Program (JPMJSP2108).
+  </p>
+</section>
+
+<section>
+  <h2>Research interests</h2>
+  <ul class="interests">
+    <li><b>UAV remote sensing for environmental monitoring</b> &mdash; low-altitude survey design, orthomosaic workflows, centimetre- and sub-centimetre-scale ground sampling</li>
+    <li><b>Instance segmentation and lightweight vision models</b> &mdash; per-object masks under heavy background mimicry, efficient architectures that run without a cluster</li>
+    <li><b>Marine and riverine litter quantification</b> &mdash; area-based rather than count-based metrics, and what the two disagree about</li>
+    <li><b>Amphibious and aerial-aquatic platforms</b> &mdash; super-resolution reconstruction and detection for shallow-water ecological survey</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Featured</h2>
+  <div class="feature">
+    <h3>PLAS-Net: Lightweight Instance Segmentation of Beach Litter in Unmanned Aerial Vehicle Imagery</h3>
+    <p class="venue">OCEANS 2026 Monterey &middot; Poster presentation &middot; 21&ndash;24 September 2026</p>
+    <p>
+      A 2.73 M-parameter segmentation model that returns an individual mask for every
+      litter item in a drone orthomosaic captured at 0.17 cm per pixel. Because the
+      output is a mask rather than a box, the survey reports projected area as well
+      as counts &mdash; and on our study beach the two tell different stories about
+      which litter matters. Fragments are 58&nbsp;% of the items but 37&nbsp;% of the
+      footprint; domestic items are 41&nbsp;% of the items but 60&nbsp;% of the footprint.
+    </p>
+    <p>
+      The annotated sample dataset is being prepared for deposit with a DOI. Until
+      then, email me and I will send you the current archive.
+    </p>
+    <div class="actions">
+      <a href="assets/PLAS-Net_OCEANS2026_paper.pdf">Paper (PDF)</a>
+      <a class="ghost" href="assets/PLAS-Net_OCEANS2026_poster.pdf">Poster (PDF)</a>
+      <a class="ghost" href="mailto:ryuuwinnie@g.ecc.u-tokyo.ac.jp?subject=PLAS-Net%20sample%20dataset">Dataset on request</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Publications</h2>
+  <ol class="pubs">
+    <li>
+      <span class="pt">PLAS-Net: Lightweight Instance Segmentation of Beach Litter in Unmanned Aerial Vehicle Imagery<span class="tag">In press</span></span>
+      <span class="pa"><span class="me">Y. Liu</span>, J. Wang, J. Song, X. Shao, Y. Chen, F. Xue, Y. Chen, K. Mizuno, S. Tabeta, F. Zhao</span>
+      <span class="pv"><em>OCEANS 2026 Monterey</em>, 2026.</span>
+    </li>
+    <li>
+      <span class="pt">PLAS-Net: Pixel-Level Area Segmentation for UAV-Based Beach Litter Monitoring<span class="tag">Under review</span></span>
+      <span class="pa"><span class="me">Y. Liu</span>, J. Wang, J. Song, X. Shao, Y. Chen, N. Xu, K. Mizuno, S. Tabeta, F. Zhao</span>
+      <span class="pv">Manuscript under review, 2026.</span>
+    </li>
+    <li>
+      <span class="pt">Cost-effective ecological monitoring in shallow waters using amphibious unmanned aerial vehicles (AUAV) and deep learning-based computer vision</span>
+      <span class="pa">F. Zhao, J. Wang, Y. Chen, X. Shao, <span class="me">Y. Liu</span>, Y. Chen, et al.</span>
+      <span class="pv"><em>Marine Environmental Research</em>, 216:107911, 2026. <a href="https://doi.org/10.1016/j.marenvres.2026.107911">doi:10.1016/j.marenvres.2026.107911</a></span>
+    </li>
+    <li>
+      <span class="pt">Diffusion-Enhanced Underwater Debris Detection via Improved YOLOv12n Framework</span>
+      <span class="pa">J. Tao, F. Zhao, Y. Chen, <span class="me">Y. Liu</span>, F. Xue, J. Song, et al.</span>
+      <span class="pv"><em>Remote Sensing</em>, 17(23):3910, 2025.</span>
+    </li>
+    <li>
+      <span class="pt">A novel underwater Holothurians monitoring system using consumer-grade amphibious UAV with Mamba-based Super-Resolution Reconstruction and enhanced YOLOv10</span>
+      <span class="pa">F. Zhao, X. Shao, J. Wang, Y. Chen, D. Xi, <span class="me">Y. Liu</span>, et al.</span>
+      <span class="pv"><em>Marine Environmental Research</em>, 107510, 2025. <a href="https://doi.org/10.1016/j.marenvres.2025.107510">doi:10.1016/j.marenvres.2025.107510</a></span>
+    </li>
+    <li>
+      <span class="pt">Riverbed litter monitoring using consumer-grade aerial-aquatic speedy scanner (AASS) and deep learning based super-resolution reconstruction and detection network</span>
+      <span class="pa">F. Zhao, <span class="me">Y. Liu</span>, J. Wang, Y. Chen, D. Xi, X. Shao, S. Tabeta, K. Mizuno</span>
+      <span class="pv"><em>Marine Pollution Bulletin</em>, 209(Pt A):117030, 2024. <a href="https://doi.org/10.1016/j.marpolbul.2024.117030">doi:10.1016/j.marpolbul.2024.117030</a></span>
+    </li>
+  </ol>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <dl class="contact">
+    <div><dt>Email</dt><dd><a href="mailto:ryuuwinnie@g.ecc.u-tokyo.ac.jp">ryuuwinnie@g.ecc.u-tokyo.ac.jp</a></dd></div>
+    <div><dt>Address</dt><dd>Graduate School of Frontier Sciences, The University of Tokyo,<br>5-1-5 Kashiwanoha, Kashiwa, Chiba 277-8563, Japan</dd></div>
+  </dl>
+</section>
+
+<footer>
+  <p>&copy; 2026 Yongying Liu. Last updated September 2026.</p>
+</footer>
+
+</div>
+
+</body>
+</html>
